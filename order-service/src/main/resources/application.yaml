@@ -1,0 +1,13 @@
+server:
+  port: 8081
+  spring:
+    kafka:
+      bootstrap-servers: localhost:9093
+
+app:
+  kafka:
+    kafkaMessageTopic: "message-topic" # назввание топика
+    kafkaMessageGroupId: "kafka-message-group-id2" # тут меняем имя, если это другое приложение.
+    kafkaOffsetValue: "latest" #"latest" - в конец or "earliest" - в начало, Но ни на что не влияет!!!!.
+    kafkaListenerAutoStartup: "false" #"false" or "true"
+
