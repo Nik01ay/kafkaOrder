@@ -10,6 +10,16 @@ repositories {
 }
 
 dependencies {
+
+    implementation(project(":order-dto"))
+    implementation(project(":kafka-event"))
+    implementation(project(":kafka-manager"))
+
+
+
+    implementation("org.springframework.boot:spring-boot-starter-web:3.3.3")
+    testImplementation("org.springframework.boot:spring-boot-starter-test:3.3.3")
+
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }

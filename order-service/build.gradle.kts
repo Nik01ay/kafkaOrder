@@ -14,9 +14,6 @@ dependencies {
     implementation(project(":kafka-event"))
     implementation(project(":kafka-manager"))
 
-    implementation("org.springframework.kafka:spring-kafka:3.2.4")
-    testImplementation("org.springframework.kafka:spring-kafka-test:3.2.4")
-
     implementation("org.springframework.boot:spring-boot-starter-web:3.3.3")
     testImplementation("org.springframework.boot:spring-boot-starter-test:3.3.3")
 

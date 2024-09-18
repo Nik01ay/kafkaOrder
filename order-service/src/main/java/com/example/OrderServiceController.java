@@ -1,6 +1,5 @@
 package com.example;
 
-import com.example.listener.KafkaMessageListener;
 import com.example.manager.KafkaMessageManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,21 +13,16 @@ import java.util.UUID;
 @RequestMapping("/api/order")
 public class OrderServiceController {
 
-    private final KafkaMessageManager kafkaMessageManager;
+    private final OrderServiceManager orderServiceManager;
 
 
+    @PostMapping("/send")
+    public ResponseEntity<String> sendMessage(@RequestBody OrderDto orderDto) {
 
-        @PostMapping("/send")
-        public ResponseEntity<String> sendMessage(@RequestBody OrderDto orderDto){
-
-            // todo нужно ли делать отдельный класс для обработки этой строки??
-            OrderEvent orderEvent = new OrderEvent( UUID.randomUUID(), orderDto);
-
-            System.out.println(orderEvent.getOrderDto().getProduct() + " "+ orderEvent.getOrderDto(). getQuantity());
-            kafkaMessageManager.send(orderEvent);
-            return ResponseEntity.ok("Message sent to kafka");
-        }
-
+        orderServiceManager.sendDtoToKafkaMessage(orderDto);
+        return ResponseEntity.ok("Message sent to kafka");
     }
+
+}
 
 
